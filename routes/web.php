@@ -54,7 +54,7 @@ route::get("paises",function(){
                                 "moneda" => "guarani",
                                 "poblacion" => 7
                             ]];
-    foreach($paises as $nombre => $pais){
+    /*foreach($paises as $nombre => $pais){
         echo "<pre>";
         echo "<h1>$nombre</h1>";
         print_r($pais["capital" ]. "<br />");
@@ -63,5 +63,20 @@ route::get("paises",function(){
         echo "</pre>";
         echo "<hr />";
     }
+$suma=0;
+foreach($paises as $nombre => $pais):
+$suma += $pais["poblacion"];
+endforeach;
+echo "la suma de los paises es $suma";*/
+    //Llamar una vista
+    //con datos paises
+    //alias: nimbre con el cual
+    //se reconoce los datos en la vista
+    return view("paises")->with("naciones", $paises);
 });
+
+Route::get('formulario_buscador','MetabuscadorController@formulario_buscador');
+
+Route::post('buscar','MetabuscadorController@buscar');
+
 //definir variable en php
